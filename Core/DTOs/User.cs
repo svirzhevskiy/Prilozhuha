@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DTOs
 {
@@ -11,5 +12,7 @@ namespace DTOs
         public string Password { get; set; }
         
         public Role Role { get; set; }
+        
+        public List<Post> Posts { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Domain
 {
@@ -13,5 +14,7 @@ namespace Domain
         
         public Guid RoleId { get; set; }
         public Role Role { get; set; }
+        
+        public virtual ICollection<Post> Posts { get; set; }
     }
 }

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\Database\Database.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Logic\Logic.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Services\Services.csproj" />
   </ItemGroup>
 

@@ -1,3 +1,4 @@
+using Application.Logic;
 using Application.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Database;
+using Logic;
 using Services;
 
 namespace WebApi
@@ -25,6 +27,9 @@ namespace WebApi
             services.AddDatabase(Configuration);
             
             services.AddScoped<IHashService, DumbHashService>();
+
+            services.AddScoped(typeof(IGenericService<>), typeof(GenericService<,>));
+            services.AddScoped<IPostService, PostService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

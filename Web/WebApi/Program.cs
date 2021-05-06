@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Database;
+using Database.Seeders;
+using WebApi.Managers;
 
 namespace WebApi
 {
@@ -13,7 +16,14 @@ namespace WebApi
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var seeders = new List<Action<AppDbContext, IServiceProvider, ILogger<AppDbContext>>>
+            {
+                (context, serviceProvider, logger) => new RoleSeeder().Seed(context, serviceProvider, logger),
+                (context, serviceProvider, logger) => new UserSeeder().Seed(context, serviceProvider, logger),
+                (context, serviceProvider, logger) => new PostSeeder().Seed(context, serviceProvider, logger),
+            };
+
+            CreateHostBuilder(args).Build().MigrateDatabase(seeders).Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -9,7 +9,7 @@ namespace Database
         public static IServiceCollection AddDatabase(this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddDbContext<AppDbContext>(options =>
+            services.AddDbContextPool<AppDbContext>(options =>
                 options.UseNpgsql(configuration.GetConnectionString("LocalPostgres")));
 
             return services;

@@ -27,11 +27,8 @@ namespace WebApi
         {
             services.AddDatabase(Configuration);
 
-            services.AddAutoMapper(typeof(GenericService<,>).Assembly);
-            
+            services.AddLogic();
             services.AddScoped<IHashService, DumbHashService>();
-            services.AddScoped(typeof(IGenericService<>), typeof(GenericService<,>));
-            services.AddScoped<IPostService, PostService>();
             
             services.AddMediatR(typeof(IGenericService<>).Assembly);
 

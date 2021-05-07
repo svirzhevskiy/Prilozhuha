@@ -25,7 +25,7 @@ namespace Logic
 
         public async Task Delete(Guid id)
         {
-            var entity = await _targetSet.FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await _targetSet.SingleOrDefaultAsync(x => x.Id == id);
 
             if (entity == null)
                 throw new ArgumentNullException();

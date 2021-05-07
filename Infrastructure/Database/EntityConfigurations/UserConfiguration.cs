@@ -23,10 +23,12 @@ namespace Database.EntityConfigurations
 
             builder
                 .Property(x => x.Name)
+                .IsRequired()
                 .HasMaxLength(Constraints.MaxUserNameLength);
 
             builder
                 .Property(x => x.Surname)
+                .IsRequired()
                 .HasMaxLength(Constraints.MaxUserSurnameLength);
 
             builder

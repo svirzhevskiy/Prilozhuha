@@ -7,10 +7,10 @@ namespace Database
     public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions options) : base(options) {}
-        
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Role> Roles { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Post> Posts { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

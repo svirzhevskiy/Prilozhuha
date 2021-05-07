@@ -7,8 +7,8 @@ namespace Domain
     {
         public Guid Id { get; set; }
         public bool IsDeleted { get; set; }
-        public string Title { get; set; }
-        
-        public virtual ICollection<User> Users { get; set; }
+        public string Title { get; set; } = string.Empty;
+
+        public virtual ICollection<User> Users { get; set; } = new List<User>();
     }
 }

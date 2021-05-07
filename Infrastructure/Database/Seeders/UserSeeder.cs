@@ -24,7 +24,7 @@ namespace Database.Seeders
                 var roles = context.Roles.ToList();
                 var userRoleId = roles.First(x => x.Title == "user").Id;
                 var adminRoleId = roles.First(x => x.Title == "admin").Id;
-                var data = GetUsers(hashService, userRoleId, adminRoleId);
+                var data = GetUsers(hashService!, userRoleId, adminRoleId);
 
                 users.AddRange(data);
                 context.SaveChanges();

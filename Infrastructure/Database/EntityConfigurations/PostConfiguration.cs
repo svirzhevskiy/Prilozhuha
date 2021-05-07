@@ -20,9 +20,6 @@ namespace Database.EntityConfigurations
             builder
                 .Property(x => x.Content)
                 .IsRequired();
-
-            builder
-                .Property(x => x.PublishDate);
         }
     }
 }

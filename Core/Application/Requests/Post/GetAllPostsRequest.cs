@@ -17,9 +17,9 @@ namespace Application.Requests.Post
                 _service = service;
             }
     
-            public async Task<List<DTOs.Post>> Handle(GetAllPostsRequest request, CancellationToken cancellationToken = default)
+            public Task<List<DTOs.Post>> Handle(GetAllPostsRequest request, CancellationToken cancellationToken = default)
             {
-                return await _service.GetAll();
+                return _service.GetAll();
             }
         }
     }

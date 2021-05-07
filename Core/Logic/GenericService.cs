@@ -59,7 +59,7 @@ namespace Logic
 
         public async Task<TDto> GetById(Guid id)
         {
-            var entity = await _targetSet.FirstOrDefaultAsync(x => !x.IsDeleted && x.Id == id);
+            var entity = await _targetSet.SingleOrDefaultAsync(x => !x.IsDeleted && x.Id == id);
 
             if (entity == null)
                 throw new ArgumentNullException();

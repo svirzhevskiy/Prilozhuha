@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Database;
 using Logic;
+using MediatR;
 using Services;
 
 namespace WebApi
@@ -25,11 +26,14 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDatabase(Configuration);
+
+            services.AddAutoMapper(typeof(GenericService<,>).Assembly);
             
             services.AddScoped<IHashService, DumbHashService>();
-
             services.AddScoped(typeof(IGenericService<>), typeof(GenericService<,>));
             services.AddScoped<IPostService, PostService>();
+            
+            services.AddMediatR(typeof(IGenericService<>).Assembly);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

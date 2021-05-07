@@ -5,12 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Core\Application\Application.csproj" />
-      <ProjectReference Include="..\Database\Database.csproj" />
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="10.1.1" />
+      <ProjectReference Include="..\..\Infrastructure\Database\Database.csproj" />
     </ItemGroup>
 
 </Project>

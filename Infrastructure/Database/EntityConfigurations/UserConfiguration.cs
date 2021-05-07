@@ -1,4 +1,5 @@
-﻿using Database.Extensions;
+﻿using Application.Common;
+using Database.Extensions;
 using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -14,7 +15,7 @@ namespace Database.EntityConfigurations
             builder
                 .Property(x => x.Email)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(Constraints.MaxUserEmailLength);
 
             builder
                 .Property(x => x.Password)
@@ -22,11 +23,11 @@ namespace Database.EntityConfigurations
 
             builder
                 .Property(x => x.Name)
-                .HasMaxLength(20);
+                .HasMaxLength(Constraints.MaxUserNameLength);
 
             builder
                 .Property(x => x.Surname)
-                .HasMaxLength(30);
+                .HasMaxLength(Constraints.MaxUserSurnameLength);
 
             builder
                 .HasMany(x => x.Posts)

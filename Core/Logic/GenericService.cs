@@ -52,7 +52,7 @@ namespace Logic
 
         public async Task<List<TDto>> GetAll()
         {
-            var query = Queryable.Where<TEntity>(_targetSet, x => !x.IsDeleted);
+            var query = _targetSet.Where(x => !x.IsDeleted);
 
             return await _mapper.ProjectTo<TDto>(query).ToListAsync();
         }

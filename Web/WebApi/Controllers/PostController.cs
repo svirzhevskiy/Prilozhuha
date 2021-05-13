@@ -18,8 +18,8 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public Task<List<Post>> GetAll() 
-            => _mediator.Send(new GetAllPostsRequest());
+        public Task<List<Post>> GetAll([FromQuery]List<string> tags) 
+            => _mediator.Send(new GetAllPostsRequest {Tags = tags});
 
         [HttpPost]
         public Task<Post> Create(Post model) 

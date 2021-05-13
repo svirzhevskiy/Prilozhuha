@@ -9,15 +9,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Logic
 {
-    public class PostService : GenericService<Domain.Post, DTOs.Post>, IPostService
+    public class PostService : GenericService<Domain.Post, Post>, IPostService
     {
         public PostService(AppDbContext context, IMapper mapper) : base(context, mapper) {}
 
         public async Task<List<Post>> GetByTags(List<string> tags)
         {
-            var query = _targetSet.Where(x => !x.IsDeleted && x.Tags.Any(tags.Contains));
+            var query = _targetSet.Where(x => !x.IsDeleted && tags.All(y => x.Tags.Contains(y)));
 
-            return await _mapper.ProjectTo<DTOs.Post>(query).ToListAsync();
+            return await _mapper.ProjectTo<Post>(query).ToListAsync();
         }
     }
 }

@@ -34,20 +34,24 @@ namespace Logic
             await _context.SaveChangesAsync();
         }
 
-        public async Task Create(TDto model)
+        public async Task<TDto> Create(TDto model)
         {
             var entity = _mapper.Map<TEntity>(model);
 
             await _targetSet.AddAsync(entity);
             await _context.SaveChangesAsync();
+
+            return _mapper.Map<TDto>(entity);
         }
 
-        public async Task Update(TDto model)
+        public async Task<TDto> Update(TDto model)
         {
             var entity = _mapper.Map<TEntity>(model);
 
             _targetSet.Update(entity);
             await _context.SaveChangesAsync();
+            
+            return _mapper.Map<TDto>(entity);
         }
 
         public async Task<List<TDto>> GetAll()

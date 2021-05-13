@@ -10,7 +10,6 @@ namespace DTOs
         public string Content { get; set; } = string.Empty;
         public DateTime PublishDate { get; set; }
         public List<string> Tags { get; set; } = new List<string>();
-
-        public User Author { get; set; } = null!;
+        public Guid AuthorId { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Requests.Post;
 using DTOs;
@@ -17,6 +18,23 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public Task<List<Post>> GetAll() => _mediator.Send(new GetAllPostsRequest());
+        public Task<List<Post>> GetAll() 
+            => _mediator.Send(new GetAllPostsRequest());
+
+        [HttpPost]
+        public Task<Post> Create(Post model) 
+            => _mediator.Send(new CreatePostRequest {Post = model});
+
+        [HttpGet("{id:guid}")]
+        public Task<Post> GetById(Guid id) 
+            => _mediator.Send(new GetPostRequest {PostId = id});
+
+        [HttpPut]
+        public Task<Post> Update(Post model) 
+            => _mediator.Send(new UpdatePostRequest {Post = model});
+
+        [HttpDelete("{id:guid}")]
+        public Task Delete(Guid id) 
+            => _mediator.Send(new DeletePostRequest {PostId = id});
     }
 }

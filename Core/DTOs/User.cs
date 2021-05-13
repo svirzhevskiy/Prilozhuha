@@ -10,9 +10,6 @@ namespace DTOs
         public string Surname { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-
-        public Role Role { get; set; } = null!;
-
-        public List<Post> Posts { get; set; } = new List<Post>();
+        public Guid RoleId { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace Logic
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             
-            services.AddScoped(typeof(IGenericService<>), typeof(GenericService<,>));
+            services.AddScoped(typeof(IGenericService<,>), typeof(GenericService<,>));
             services.AddScoped<IPostService, PostService>();
             
             return services;

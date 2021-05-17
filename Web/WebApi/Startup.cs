@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using Database;
 using Logic;
 using MediatR;
+using Serilog;
 using Services;
 
 namespace WebApi
@@ -30,7 +31,7 @@ namespace WebApi
             services.AddLogic();
             services.AddScoped<IHashService, DumbHashService>();
             
-            services.AddMediatR(typeof(IGenericService<>).Assembly);
+            services.AddMediatR(typeof(IGenericService<,>).Assembly);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -50,6 +51,8 @@ namespace WebApi
             }
 
             app.UseHttpsRedirection();
+            
+            app.UseSerilogRequestLogging();
 
             app.UseRouting();
 

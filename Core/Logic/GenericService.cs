@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Logic
 {
-    public class GenericService<TEntity, TDto> : IGenericService<TDto> where TDto : class where TEntity : class, IEntity
+    public class GenericService<TEntity, TDto> : IGenericService<TEntity, TDto> where TDto : class where TEntity : class, IEntity
     {
         protected readonly AppDbContext _context;
         protected readonly DbSet<TEntity> _targetSet;

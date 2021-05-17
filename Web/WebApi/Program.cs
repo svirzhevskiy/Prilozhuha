@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Database;
 using Database.Seeders;
+using Serilog;
 using WebApi.Managers;
 
 namespace WebApi
@@ -25,6 +26,11 @@ namespace WebApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog((context, services, configuration) => configuration
+                    .ReadFrom.Configuration(context.Configuration)
+                    .ReadFrom.Services(services)
+                    .Enrich.FromLogContext()
+                    .WriteTo.Console())
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

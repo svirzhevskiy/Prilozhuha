@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Domain;
 
 namespace Application.Logic
 {
-    public interface IGenericService<T> where T : class
+    public interface IGenericService<E, T> where E : class, IEntity where T : class
     {
         public Task Delete(Guid id);
         public Task<T> Create(T model);
